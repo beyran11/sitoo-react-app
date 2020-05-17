@@ -8,7 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import BasicTextFields from "./BasicTextFields";
 
-export default function FormDialog({addTodo}) {
+function FormDialog ({addTodo}) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -37,3 +37,5 @@ export default function FormDialog({addTodo}) {
         </div>
     );
 }
+
+export default FormDialog;

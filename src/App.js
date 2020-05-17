@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import SimpleTable from "./SimpleTable";
 import FormDialog from "./FormDialog";
-
+import PrimarySearchAppBar from "./PrimarySearchAppBar"
 
 class App extends Component {
   state = {
@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
         <div className="todo-app container">
-          <h1 className="center blue-text">Sitoo App Todo's</h1>
+          <PrimarySearchAppBar />
           <SimpleTable todos={this.state.todos} deleteTodo={this.deleteTodo} />
 
           <FormDialog addTodo={this.addTodo} />
