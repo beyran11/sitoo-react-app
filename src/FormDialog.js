@@ -7,9 +7,24 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import BasicTextFields from "./BasicTextFields";
+import { makeStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+    extendedIcon: {
+        marginRight: theme.spacing(1),
+    },
+}));
 
 function FormDialog ({addTodo}) {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false)
+    const classes = useStyles();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -21,9 +36,10 @@ function FormDialog ({addTodo}) {
 
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                Add New Users
-            </Button>
+            <Fab color="primary" aria-label="add">
+                <AddIcon onClick={handleClickOpen} />
+            </Fab>
+
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Manage Users</DialogTitle>
                 <DialogContent>
@@ -31,6 +47,7 @@ function FormDialog ({addTodo}) {
                         Add Users Here ...
                     </DialogContentText>
                     <BasicTextFields addTodo={addTodo} />
+
                 </DialogContent>
 
             </Dialog>
