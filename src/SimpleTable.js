@@ -25,7 +25,7 @@ const SimpleTable = ({todos, deleteTodo}) => {
                         {todo.id}
                     </TableCell>
                     <TableCell align="right">{todo.firstname}</TableCell>
-                    <TableCell align="right">{todo.lastname}</TableCell>
+                    <TableCell className="col3" align="right">{todo.lastname}</TableCell>
                     <TableCell align="right">{todo.email}</TableCell>
                 </TableRow>
             )
@@ -38,7 +38,7 @@ const SimpleTable = ({todos, deleteTodo}) => {
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
-                <TableHead>
+                <TableHead className="mytable" >
                     <TableRow>
                         <TableCell>ID</TableCell>
                         <TableCell align="right">First Name</TableCell>
