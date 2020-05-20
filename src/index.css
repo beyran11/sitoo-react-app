@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.col3 {
+  background: mediumseagreen;
+
+}
+
+.MuiTableRow-root {
+  background: mediumseagreen;
+  position: relative;
+
+}
+
+.form-dialog {
+  background: coral;
+  position: relative;
+}
+
+.form-dialog .add-icon {
+  position: absolute;
+  right: 20px;
+}

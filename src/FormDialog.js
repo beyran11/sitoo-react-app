@@ -35,8 +35,8 @@ function FormDialog ({addTodo}) {
     };
 
     return (
-        <div>
-            <Fab color="primary" aria-label="add">
+        <div className="form-dialog">
+            <Fab className="add-icon" color="primary" aria-label="add">
                 <AddIcon onClick={handleClickOpen} />
             </Fab>
 
