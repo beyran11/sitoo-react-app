@@ -7,6 +7,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Checkbox from '@material-ui/core/Checkbox';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import {colors} from "@material-ui/core";
+
 
 const useStyles = makeStyles({
     table: {
@@ -17,16 +23,34 @@ const useStyles = makeStyles({
 
 
 const SimpleTable = ({todos, deleteTodo}) => {
-    const todolist = todos.length ? (
+
+     const todolist = todos.length ? (
         todos.map( todo => {
+            // add an index for checked boxes
+            todo.checked = false;
+
             return (
-                <TableRow onClick={() => {deleteTodo(todo.id)}} key={todo.id}>
+                <TableRow  key={todo.id}>
                     <TableCell component="th" scope="row">
-                        {todo.id}
+                        <Checkbox onChange={() =>{
+                            console.log(todo.id) ;
+                            todo.checked = true ;
+                        }}
+                            color="primary"
+                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                        />
                     </TableCell>
-                    <TableCell align="right">{todo.firstname}</TableCell>
-                    <TableCell className="col3" align="right">{todo.lastname}</TableCell>
-                    <TableCell align="right">{todo.email}</TableCell>
+                    <TableCell align="left">{todo.firstname} {todo.lastname}</TableCell>
+                    <TableCell className="col3" align="left">{todo.email}</TableCell>
+                    <TableCell align="left">{todo.created}</TableCell>
+                    <TableCell align="left">{todo.modified}</TableCell>
+                    <TableCell align="right">
+                        <Tooltip onClick={() => {deleteTodo(todo.id)}} title="Delete">
+                            <IconButton aria-label="delete">
+                                <DeleteIcon />
+                            </IconButton>
+                        </Tooltip>
+                    </TableCell>
                 </TableRow>
             )
         })
@@ -40,10 +64,17 @@ const SimpleTable = ({todos, deleteTodo}) => {
             <Table className={classes.table} aria-label="simple table">
                 <TableHead className="mytable" >
                     <TableRow>
-                        <TableCell>ID</TableCell>
-                        <TableCell align="right">First Name</TableCell>
-                        <TableCell align="right">Last Name</TableCell>
-                        <TableCell align="right">Email</TableCell>
+                        <TableCell>
+                            <Checkbox
+                                color="primary"
+                                inputProps={{ 'aria-label': 'secondary checkbox' }}
+                            />
+                        </TableCell>
+                        <TableCell align="left">Name</TableCell>
+                        <TableCell align="left">Email</TableCell>
+                        <TableCell align="left">Date Created</TableCell>
+                        <TableCell align="left">Date Modified</TableCell>
+                        <TableCell align="right">Delete User</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
