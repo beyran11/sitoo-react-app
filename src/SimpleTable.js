@@ -11,8 +11,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import {colors} from "@material-ui/core";
-
 
 const useStyles = makeStyles({
     table: {
@@ -33,7 +31,6 @@ const SimpleTable = ({todos, deleteTodo}) => {
                 <TableRow  key={todo.id}>
                     <TableCell component="th" scope="row">
                         <Checkbox onChange={() =>{
-                            console.log(todo.id) ;
                             todo.checked = true ;
                         }}
                             color="primary"

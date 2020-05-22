@@ -1,21 +1,15 @@
 import React, {Component} from 'react';
 import SimpleTable from "./SimpleTable";
 import FormDialog from "./FormDialog";
-import PrimarySearchAppBar from "./PrimarySearchAppBar"
-import Checkboxes from "./Checkboxes";
+import PrimarySearchAppBar from "./PrimarySearchAppBar";
 import Button from "@material-ui/core/Button";
 
 class App extends Component {
   state = {
-    todos: [
-      {id: 1, firstname: 'Hamzeh',lastname: 'Beiranvand',email: 'beyran11@gmail.com',created: 2019, modified: 2020},
-      {id: 2, firstname: 'Karim',lastname: 'Beiranvand',email: 'beiranvand.karim@gmail.com',created: 2019, modified: 2020},
-      {id: 3, firstname: 'Mohammad',lastname: 'Hasanvand',email: 'khatere.2019@gmail.com',created: 2019, modified: 2020}
-    ]
+    todos: []
   }
 
   deleteTodo = (id) => {
-    console.log(id);
     const todos = this.state.todos.filter(todo => {
       return todo.id !== id
     });
@@ -40,6 +34,7 @@ class App extends Component {
           <SimpleTable todos={this.state.todos} deleteTodo={this.deleteTodo} />
 
           <FormDialog addTodo={this.addTodo} />
+
           <Button onClick={() => {
             console.log(this.state.todos)
             const todos = this.state.todos.filter(todo => {
