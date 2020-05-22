@@ -13,33 +13,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 class BasicTextFields extends Component{
-    //const classes = useStyles();
+
     state = {
         firstname: '',
         lastname: '',
         email: ''
-
     }
 
     handleChangeFname = (e) => {
         this.setState({
             firstname: e.target.value
         })
-
     }
 
     handleChangeLname = (e) => {
         this.setState({
             lastname: e.target.value
         })
-
     }
 
     handleChangeEmail = (e) => {
         this.setState({
             email: e.target.value
         })
-
     }
 
     handleSubmit = (e) => {
@@ -50,8 +46,8 @@ class BasicTextFields extends Component{
             lastname: '',
             email: ''
         })
-
     }
+
     render() {
         return (
             <form className={useStyles.root} noValidate autoComplete="off">
@@ -64,21 +60,14 @@ class BasicTextFields extends Component{
                 <p>
                     <TextField id="outlined-basic" label="Email" variant="outlined" onChange={this.handleChangeEmail} value={this.state.email} />
                 </p>
-
                 <p>
                     <Button variant="contained" color="primary" onClick={this.handleSubmit}>
                         Add User
                     </Button>
                 </p>
-
-
-
-
             </form>
         );
     }
-
-
 }
 
 export default BasicTextFields;
