@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function FormDialog ({addTodo}) {
+function FormDialog () {
     const [open, setOpen] = React.useState(false)
     const classes = useStyles();
 
@@ -43,7 +43,7 @@ function FormDialog ({addTodo}) {
                     <DialogContentText>
                         Add Users Here ...
                     </DialogContentText>
-                    <BasicTextFields addTodo={addTodo} />
+                    <BasicTextFields />
 
                 </DialogContent>
 
@@ -51,5 +51,7 @@ function FormDialog ({addTodo}) {
         </div>
     );
 }
+
+
 
 export default FormDialog;
