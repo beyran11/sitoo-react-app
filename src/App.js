@@ -3,52 +3,31 @@ import SimpleTable from "./SimpleTable";
 import FormDialog from "./FormDialog";
 import PrimarySearchAppBar from "./PrimarySearchAppBar";
 import Button from "@material-ui/core/Button";
+import {connect} from 'react-redux';
 
 class App extends Component {
-  state = {
-    todos: []
-  }
-
-  deleteTodo = (id) => {
-    const todos = this.state.todos.filter(todo => {
-      return todo.id !== id
-    });
-    this.setState({
-      todos
-    })
-  }
-
-  addTodo = (todo) => {
-    todo.id = Math.random();
-    let todos = [...this.state.todos,todo]
-    this.setState({
-      todos
-    })
-  }
-
-
   render() {
     return (
         <div className="todo-app container">
           <PrimarySearchAppBar />
-          <SimpleTable todos={this.state.todos} deleteTodo={this.deleteTodo} />
-
-          <FormDialog addTodo={this.addTodo} />
-
-          <Button onClick={() => {
-            console.log(this.state.todos)
-            const todos = this.state.todos.filter(todo => {
-              return todo.checked !== true
-            });
-            this.setState({
-              todos
-            })
-
-          }} variant="contained" color="secondary"> Delete Selected </Button>
-
+          <SimpleTable />
+          <FormDialog />
+          <Button onClick={this.props.deletePosts} variant="contained" color="secondary"> Delete Selected </Button>
         </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        todos: state.todos
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deletePosts: () => { dispatch({type: 'DELETE_POSTS'}) }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
