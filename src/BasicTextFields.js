@@ -71,16 +71,12 @@ class BasicTextFields extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        todos: state.todos
-    }
-}
+const mapStateToProps = (state) => ({
+    todos: state.todos
+})
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addTodoPost: (todo) => { dispatch({type: 'ADD_POST',todo:todo}) }
-    }
-}
+const mapDispatchToProps = (dispatch) => ({
+    addTodoPost: (todo) => { dispatch({type: 'ADD_POST',todo:todo}) }
+})
 
 export default connect(mapStateToProps,mapDispatchToProps)(BasicTextFields);
